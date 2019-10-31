@@ -9,7 +9,7 @@ const Location = ({city})=>{
     
 }; 
 
-WeatherLocation.PropTypes = {
+Location.propTypes = {
     city: PropTypes.string.isRequired,
 };
 

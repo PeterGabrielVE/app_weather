@@ -9,7 +9,7 @@ import {
     RAIN,
     SNOW,
     WINDY,
-} from './../constants/weathers';
+} from './../../../constants/weathers';
 
 const icons = {
     [CLOUD]:"cloud",
@@ -42,7 +42,7 @@ const WeatherTemperature = ({ temperature, weatherState }) =>(
    
 );
 
-WeatherTemperature.PropTypes = {
+WeatherTemperature.propTypes = {
     temperature: PropTypes.number,
     weatherState: PropTypes.string,
 };
