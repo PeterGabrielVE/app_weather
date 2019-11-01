@@ -4,6 +4,7 @@ import WeatherData from './WeatherData';
 import './styles.css';
 import {
     SUN,
+    WINDY,
 } from './../../constants/weathers';
 
 const data = {
@@ -14,12 +15,40 @@ const data = {
 
 }
 
+const data2 = {
+    temperature: 20,
+    weatherState: WINDY,
+    humidity: 19,
+    wind: "18 m/s"
+
+}
+
 class WeatherLocation extends Component {
+
+    constructor (){
+        super();
+        this.state = {
+            city: 'Barquisimeto',
+            data:data,
+        };
+    }
+
+    handleUpdateClick = () => {
+        console.log('update');
+        this.setState({
+            city: 'Cabudare',
+            data:data2,
+        });
+    }
+
     render(){
+        const { city , data } = this.state;
+
         return( 
             <div className="weatherLocationCont">
-                <Location city={"Barquisimeto"}></Location>
+                <Location city={city}></Location>
                 <WeatherData data={data}></WeatherData>
+                <button onClick={this.handleUpdateClick}>Actualizar</button>
             </div>
         )
     }
