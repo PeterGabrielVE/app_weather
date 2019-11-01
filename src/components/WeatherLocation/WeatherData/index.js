@@ -7,16 +7,19 @@ import {
 } from './../../../constants/weathers';
 
 
-const WeatherData = () =>(
-    
-    <div className="weatherDataCont">
+const WeatherData = ( { data: { temperature, weatherState, humidity, wind } }) =>{
+
+
+    return(
+        <div className="weatherDataCont">
         <WeatherTemperature 
-        temperature={20} 
-        weatherState={SUN}
+        temperature={temperature} 
+        weatherState={weatherState}
         />
-        <WeatherExtraInfo humidity={80} wind={"10 m/s"}></WeatherExtraInfo>
+        <WeatherExtraInfo humidity={humidity} wind={wind}></WeatherExtraInfo>
     </div>
+    )
    
-);
+};
 
 export default WeatherData;
