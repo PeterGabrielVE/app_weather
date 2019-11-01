@@ -7,9 +7,9 @@ import {
 } from './../../constants/weathers';
 
 const data = {
-    temperature: 20,
+    temperature: 24,
     weatherState: "SUN",
-    humidity: 25,
+    humidity: 15,
     wind: "10 m/s"
 
 }
