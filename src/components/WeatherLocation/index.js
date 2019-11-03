@@ -24,15 +24,20 @@ class WeatherLocation extends Component {
             city: 'Barquisimeto',
             data:data,
         };
-        console.log("");
+        console.log("constructor");
     }
 
-    componentDidMount(){
-
+    componentDidMount(prevProps, preState){
+        console.log(" componentDidMount");
+        this.handleUpdateClick();
     }
     
-    
+    componentDidUpdate(){
+        console.log("componentDidUpdate");
 
+    }
+
+    
     handleUpdateClick = () => {
 
         fetch(api_weather).then(resolve => {
@@ -50,7 +55,7 @@ class WeatherLocation extends Component {
 
     render(){
         const { city , data } = this.state;
-
+        console.log("render");
         return( 
             <div className="weatherLocationCont">
                 <Location city={city}></Location>
