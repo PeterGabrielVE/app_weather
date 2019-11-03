@@ -1,19 +1,12 @@
 import React, {Component} from 'react';
-import convert from 'convert-units';
+import transformWeather from './../../services/transformWeather';
+import {api_weather} from './../../constants/api_url';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import './styles.css';
 import {
     SUN,
 } from './../../constants/weathers';
-
-const location = "Barquisimeto,VE";
-const api_key = "6e4ea37823111c23ec8eb9dbe1f87f1f";
-const url_base_weather = "http://api.openweathermap.org/data/2.5/weather";
-
-const api_weather = `${url_base_weather}?q=${location}&appid=${api_key}`;
-
-
 
 const data = {
     temperature: 24,
@@ -23,8 +16,6 @@ const data = {
 
 }
 
-
-
 class WeatherLocation extends Component {
 
     constructor (){
@@ -33,39 +24,21 @@ class WeatherLocation extends Component {
             city: 'Barquisimeto',
             data:data,
         };
+        console.log("");
     }
 
-    getWeatherState = weather_data => {
-        return SUN;
+    componentDidMount(){
+
     }
-
-    getTemp = Kelvin =>{
-        return Number(convert(Kelvin).from("K").to("C").toFixed(2));
-    }
-
-    getData = weather_data => {
-
-        const { humidity, temp } = weather_data.main;
-        const { speed } = weather_data.wind;
-        const weatherState = this.getWeatherState(weather_data);
-        const temperature = this.getTemp(temp);
-
-        const data = {
-            humidity,
-            temperature,
-            weatherState,
-            wind: `${speed} m/s `
-        }
-
-        return data;
-    }
+    
+    
 
     handleUpdateClick = () => {
 
         fetch(api_weather).then(resolve => {
             return resolve.json();
         }).then(data => {
-            const newWeather = this.getData(data);
+            const newWeather = transformWeather(data);
             console.log(newWeather);
             //debugger;
             this.setState({
