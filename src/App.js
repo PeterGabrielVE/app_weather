@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import LocationList from './components/LocationList';
+import ForecastExtended from './components/ForecastExtended';
 import './App.css';
 
 const cities = [ 'Barquisimeto,ve',
@@ -38,7 +39,9 @@ class App extends Component {
                         </Col>
                         <Col xs={12} md={6}>
                             <Paper>
-                                <div className="details"></div>
+                                <div className="details">
+                                    <ForecastExtended></ForecastExtended>
+                                </div>
                         </Paper>
                         </Col>
                     </Row>
