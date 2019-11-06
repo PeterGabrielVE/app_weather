@@ -29,7 +29,7 @@ import {
     }
 
     const getTemp = Kelvin =>{
-        return Number(convert(Kelvin).from("K").to("C").toFixed(2));
+        return Number(convert(Kelvin).from("K").to("C").toFixed(0));
     }
 
     const transformWeather = weather_data => {
