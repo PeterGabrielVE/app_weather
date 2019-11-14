@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import LocationList from './components/LocationList';
 import ForecastExtended from './components/ForecastExtended';
 import './App.css';
+import { setCity } from './actions';
 
 const cities = [ 'Barquisimeto,ve',
                  'Caracas,ve',
@@ -18,8 +19,6 @@ const cities = [ 'Barquisimeto,ve',
 
 const store  = createStore( () => {},
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() );                 
-
-const setCity = value => ({ type:'setType', value});
 
 class App extends Component {
 
@@ -32,7 +31,6 @@ class App extends Component {
         this.setState({city});
         console.log("handleSelectionLocation");
 
-        
         store.dispatch(setCity(city));
     }
     render(){
