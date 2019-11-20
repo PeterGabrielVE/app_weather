@@ -4,11 +4,9 @@ import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
-import LocationList from './components/LocationList';
-import ForecastExtended from './components/ForecastExtended';
+import LocationListContainer from './containers/LocationListContainer';
+import ForecastExtendedContainer from './containers/ForecastExtendedContainer';
 import './App.css';
-import { setCity } from './actions';
-import { store } from './store';
 
 const cities = [ 'Barquisimeto,ve',
                  'Caracas,ve',
@@ -17,22 +15,9 @@ const cities = [ 'Barquisimeto,ve',
                   'Barcelona,es',
                   'Madrid,es'];
 
-
 class App extends Component {
 
-    constructor(){
-        super();
-        this.state = { city: null };
-    }
-
-    handleSelectedLocation = city =>{
-        this.setState({city});
-        console.log("handleSelectionLocation");
-
-        store.dispatch(setCity(city));
-    }
     render(){
-        const { city } = this.state;
         return (
                 <Grid fluid>
                     <Row>
@@ -46,19 +31,14 @@ class App extends Component {
                     </Row>
                     <Row>
                         <Col xs={12} md={6}>
-                            <LocationList cities={cities}
-                            onSelectedLocation={this.handleSelectedLocation}>
-                            </LocationList>
+                            <LocationListContainer cities={cities}>
+                            </LocationListContainer>
                         </Col>
                         <Col xs={12} md={6}>
-                            <Paper>
+                            <Paper zDepth={4}>
                                 <div className="details">
-                                {
-                                    !city?
-                                    <h1>No se seleccionó ciudad </h1> :
-                                    <ForecastExtended city={ city }></ForecastExtended>
-                                }
-                                    </div>
+                                    <ForecastExtendedContainer></ForecastExtendedContainer>
+                                </div>
                         </Paper>
                         </Col>
                     </Row>
@@ -68,4 +48,6 @@ class App extends Component {
     } 
 }
 
+
 export default App;
+
