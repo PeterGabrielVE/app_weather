@@ -6,6 +6,6 @@ const initialState = {
     city: "Barquisimeto, VE"
 };
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE || compose;
+const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store  = createStore(city, initialState, composeEnhancers(applyMiddleware(thunk)));                 
